@@ -1,0 +1,126 @@
+/*--- VARIABLES ---*/
+/* COLORING */
+$c_Main_01: hsl(158, 36%, 37%); //Dark cyan
+$c_Main_02: hsl(30, 38%, 92%); //Cream
+$c_Sub_01: hsl(212, 21%, 14%); //Very dark blue
+$c_Sub_02: hsl(228, 12%, 48%); //Dark grayish blue
+$c_Sub_03: hsl(0, 0%, 100%); //White
+
+$c_Win_bg: $c_Main_02;
+$c_Card_bg: $c_Sub_03;
+$c_Card_heading: $c_Sub_01;
+$c_Card_text: $c_Sub_02;
+$c_Card_button_text: $c_Sub_03;
+$c_Card_price: $c_Main_01;
+$c_Card_price_discount: $c_Sub_02;
+$c_Card_button_bg_neutral: $c_Main_01;
+$c_Card_button_bg_hover: $c_Sub_01;
+
+/*--- STYLES ---*/
+/* Sizing */
+
+$fs_Card_oa: 14px;
+$fs_Card_low: 12px;
+$fs_Card_btn: 15px;
+
+$fw_button: 700;
+
+$m_Card_section: 28px;
+$m_Card_subsection: 12px;
+
+$b_Card_radius: 10px;
+
+/*--- MIXINS ---*/
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@mixin font_main {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+@mixin font_sub {
+  margin: 0;
+  font-size: $fs_Card_oa;
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: $c_Card_text;
+}
+
+@mixin text_decoration {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include font_main;
+  }
+  p {
+    @include font_sub;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+/* Global styles */
+
+@mixin pricing {
+  @include font_main;
+  font-size: 2rem;
+  color: $c_Card_price;
+}
+
+@mixin pricing_discount {
+  font-size: $fs_Card_low;
+  text-decoration: line-through;
+  color: $c_Card_price_discount;
+}
+
+@mixin card_btn {
+  .card_btn {
+    width: 100%;
+    height: calc(3.5 * $fs_Card_oa);
+    border-style: none;
+    border-radius: $b_Card_radius;
+    font-weight: $fw_button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $fs_Card_oa;
+    font-size: $fs_Card_btn;
+    color: $c_Card_button_text;
+    background-color: $c_Card_button_bg_neutral;
+    img {
+      width: calc($fs_Card_btn + 2px);
+      height: calc($fs_Card_btn + 2px);
+    }
+  }
+  .card_btn:hover {
+    background-color: $c_Card_button_bg_hover;
+    cursor: pointer;
+  }
+}
